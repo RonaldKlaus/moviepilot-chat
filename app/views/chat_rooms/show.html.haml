@@ -1,0 +1,12 @@
+%h1= "Willkommen im #{@chat_room.title}"
+%p= @chat_room.description
+
+%h3= "Nix los hier." if @chat_room.messages.size == 0
+
+.js--messages.messages{data: {"chat-room-id" => @chat_room.id}}
+  = render @chat_room.messages
+
+  %form.js--message
+    .js--chat-room{display: "none", data: {id: @chat_room.id}}
+    .js--message-body{contenteditable: true}
+    %button.js--submit.btn.btn-primary.btn-lg Senden

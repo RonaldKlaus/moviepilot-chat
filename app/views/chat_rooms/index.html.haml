@@ -1,0 +1,5 @@
+%h1 Alle ChatRooms
+
+- @chat_rooms.each do |chat_room|
+    = chat_room.title
+    = link_to "Beitreten", chat_room_path(chat_room)

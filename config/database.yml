@@ -1,0 +1,27 @@
+default: &default
+  adapter: mysql2
+  username: root
+  password:
+  encoding: utf8
+
+  socket: /tmp/mysql.sock
+  reconnect: true
+  # host: 192.168.2.8
+  # port: 3306
+
+development:
+  <<: *default
+  database: chat_development
+
+production:
+  <<: *default
+  database: chat_production
+
+test:
+  adapter: mysql2
+  username: root
+  password:
+  encoding: utf8
+  socket: /tmp/mysql.sock
+  reconnect: true
+  database: chat_test
