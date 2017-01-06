@@ -1,9 +1,13 @@
-.card
+.card.form-group.js--message{data: {id: "#{message.id}"}}
   .card-block
     .row
-      .col-md-1
+      .col-md-1.message--avatar
         = gravatar_for message.user
-      .col-md-2
+      .col-md-2.card-text-area
         .card-text
-          %span.text-muted= "#{message.user.username} #{message.created_at.strftime('%H:%M:%S %d %B %Y')}"
-          = message.body
+          %strong= message.user.name
+          %span.text-muted
+            = message.created_at.strftime('%H:%M:%S %d %B %Y')
+          = link_to "Ändern", "#", class: "message--edit js--message--edit"
+          = link_to "Löschen", message_path(message), method: :delete, class: "message--delete js--message--delete"
+        = message.body

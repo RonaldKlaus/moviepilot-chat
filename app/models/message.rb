@@ -6,4 +6,6 @@ class Message < ApplicationRecord
 
   # !It has to be after_create_commit, cause otherwise it is not in the db yet
   after_create_commit { MessageBroadcastJob.perform_later(self) }
+  after_update_commit { MessageBroadcastJob.perform_later(self, "update") }
+  before_destroy { MessageBroadcastJob.perform_later(self.id, "destroy") }
 end

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: "home#show"
 
   resources :chat_rooms, only: [:new, :create, :show, :index]
+  resources :messages
 
   # has to be mounted for the websockets
   mount ActionCable.server => '/cable'
