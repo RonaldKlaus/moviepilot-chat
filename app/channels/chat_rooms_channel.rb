@@ -14,6 +14,6 @@ class ChatRoomsChannel < ApplicationCable::Channel
   # it fires the send_message from chat_rooms.coffee
   def send_message(data)
     current_user.messages.create!(body: data["message"], chat_room_id: data["chat_room_id"])
-    # ActionCable.server.broadcast("chat_rooms_#{params['chat_room_id']}_channel", message: data["message"])
+    ActionCable.server.broadcast("chat_rooms_#{params['chat_room_id']}_channel", message: data["message"])
   end
 end

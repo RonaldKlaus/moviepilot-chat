@@ -28,11 +28,13 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'devise'
-gem "bootstrap"
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
 gem 'mysql2'
 gem 'haml'
 gem "cancancan"
 gem 'redis', '~> 3.2'
+gem 'redis-namespace'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

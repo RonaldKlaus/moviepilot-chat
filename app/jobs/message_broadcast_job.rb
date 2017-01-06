@@ -12,9 +12,10 @@ class MessageBroadcastJob < ApplicationJob
   private
 
   def render_message(message)
-    Rails.logger.debug "message: #{message}"
     # New in Rails 5 you can call render like this
     # We just want to render the partial as HTML, it is also posible to handle JSON
-    MessagesController.render('messages/message', message: message)
+    partial = MessagesController.render(partial: 'messages/message', message: message)
+    Rails.logger.debug "PARTIAL: #{partial}"
+    partial
   end
 end
