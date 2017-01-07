@@ -1,1 +1,1 @@
-$redis = Redis::Namespace.new("MoviepilotChat", redis: Redis.new)
+# $redis = Redis::Namespace.new("MoviepilotChat", redis: Redis.new)

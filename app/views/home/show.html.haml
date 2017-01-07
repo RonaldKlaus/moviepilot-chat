@@ -1,1 +1,9 @@
-Hier!
+= render "/layouts/header", title: "This Is Real(time)", subtitle: "Mit Rails 5 und WebSockets"
+.container
+  - if @current_user.present?
+    %p= "Hallo <strong>#{@current_user.name}</strong>. Willkommen bei Moviepilot Chat. Hier kannst du mit filminteressierten Menschen #{link_to("chatten", chat_rooms_path)}, was das Zeug hält. Viel Spaß!".html_safe
+  - else
+    = form_for :session, url: "/session", method: :post do |form|
+      = form.text_field :username
+      = form.password_field :password
+      = form.submit "Anmelden"

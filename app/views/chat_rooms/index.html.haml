@@ -1,5 +1,10 @@
-%h1 Alle ChatRooms
+= render "/layouts/header", title: "Alle ChatRooms", subtitle: "Trete einem Chatroom bei <strike>oder erstelle einen neuen</strike>.".html_safe
 
-- @chat_rooms.each do |chat_room|
-    = chat_room.title
-    = link_to "Beitreten", chat_room_path(chat_room)
+.container
+  %ul
+  - @chat_rooms.each do |chat_room|
+    %li
+      = chat_room.title
+      = link_to "Beitreten", chat_room_path(chat_room)
+      - if chat_room.user_id == @current_user.id
+        = link_to "Löschen", chat_room_path(chat_room), method: :delete, class: "chatroom--delete js--chatroom--delete"

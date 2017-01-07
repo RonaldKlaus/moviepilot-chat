@@ -1,10 +1,13 @@
+# This is the Stream
 class ChatRoomsChannel < ApplicationCable::Channel
   # Method to start streaming from a channel
-  # We can many channels at the same time and because we are using a chat_room_id
-  # we are able to handle it. By default there is only one channel
+  # We can many channels at the same time
+  # (identifiend by something like "channel_room_#{params[:room_id]}"
+  # By default there is only one channel
   def subscribed
-    channel = "chat_rooms_channel"
-    stream_from channel
+    # the channel can also be a an object, like User or Comment
+    # use params[:chat_room_id] to separat channels
+    stream_from "chat_rooms_channel_#{params[:chat_room_id]}"
   end
 
   def unsubscribed

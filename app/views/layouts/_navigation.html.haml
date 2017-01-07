@@ -1,0 +1,15 @@
+.index
+  %nav#mainNav.navbar.navbar-default.navbar-fixed-top.navbar-custom
+    .container
+      .navbar-header.page-scroll
+        %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+          %span.sr-only Toggle navigation
+          Menu
+        %a.navbar-brand{href: "#{root_path}"} Moviepilot Chat
+      #bs-example-navbar-collapse-1.collapse.navbar-collapse
+        %ul.nav.navbar-nav.navbar-right
+          - if @current_user.present?
+            %li.page-scroll
+              = link_to @current_user.name, session_path(1), method: "DELETE"
+            %li.page-scroll
+              %a{href: "#{chat_rooms_path}"} Chatrooms
